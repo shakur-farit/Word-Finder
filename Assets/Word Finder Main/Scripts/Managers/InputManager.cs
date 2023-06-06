@@ -11,15 +11,23 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyboardColorizer keyboardColorizer;
 
     private int currentWordContainerIndex;
-    private bool canAddLetter = true; 
+    private bool canAddLetter = true;
+
+    private void OnEnable()
+    {
+        KeyboardKey.onKeyPressed += KeyPressedCallback;
+    }
+
+    private void OnDisable()
+    {
+        KeyboardKey.onKeyPressed -= KeyPressedCallback;
+    }
 
     private void Start()
     {
         Initialize();
 
         tryButton.interactable = false;
-
-        KeyboardKey.onKeyPressed += KeyPressedCallback;
     }
 
     private void Initialize()
@@ -54,7 +62,10 @@ public class InputManager : MonoBehaviour
         keyboardColorizer.Colorize(secretWord, wordToCheck);
 
         if (wordToCheck == secretWord)
+        {
             Debug.Log("LevelComplete");
+            SetLevelComplete();
+        }
         else
         {
             Debug.Log("WrongWord");
@@ -63,6 +74,16 @@ public class InputManager : MonoBehaviour
             DisableTryButton();
             currentWordContainerIndex++;
         }
+    }
+
+    private void SetLevelComplete()
+    {
+        if (GameManager.instance == null)
+        {
+            Debug.LogWarning("There is no object with GameManager component!");
+            return;
+        }
+        GameManager.instance.SetGameState(GameState.LevelComplete);
     }
 
     public void BackspacePressedCallback()
