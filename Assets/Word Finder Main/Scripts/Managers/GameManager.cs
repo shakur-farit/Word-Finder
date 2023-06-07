@@ -29,4 +29,9 @@ public class GameManager : MonoBehaviour
         this.gameState = gameState;
         onGameStateChanged?.Invoke(gameState);
     }
+
+    public void NextButtonCallback()
+    {
+        SetGameState(GameState.Game);
+    }
 }

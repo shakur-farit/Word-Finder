@@ -12,6 +12,34 @@ public class KeyboardColorizer : MonoBehaviour
         keys = GetComponentsInChildren<KeyboardKey>();
     }
 
+    private void OnEnable()
+    {
+        GameManager.onGameStateChanged += GameStateChanhedCallback;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameStateChanged -= GameStateChanhedCallback;
+    }
+
+    private void GameStateChanhedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+                Initialize();
+                break;
+        }
+    }
+
+    private void Initialize()
+    {
+        for (int i = 0; i < keys.Length; i++)
+        {
+            keys[i].Initialize();
+        }
+    }
+
     public void Colorize(string secretWord, string wordToCheck)
     {
         for (int i = 0; i < keys.Length; i++)

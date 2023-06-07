@@ -16,11 +16,13 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         KeyboardKey.onKeyPressed += KeyPressedCallback;
+        GameManager.onGameStateChanged += GameStateChanhedCallback;
     }
 
     private void OnDisable()
     {
         KeyboardKey.onKeyPressed -= KeyPressedCallback;
+        GameManager.onGameStateChanged -= GameStateChanhedCallback;
     }
 
     private void Start()
@@ -32,10 +34,14 @@ public class InputManager : MonoBehaviour
 
     private void Initialize()
     {
+        currentWordContainerIndex = 0;
+        canAddLetter = true;
+
+        DisableTryButton();
+
         for (int i = 0; i < wordContainers.Length; i++)
         {
-            wordContainers[i].Initialize();
-            
+            wordContainers[i].Initialize();           
         }
     }
 
@@ -51,6 +57,16 @@ public class InputManager : MonoBehaviour
             canAddLetter = false;
             EnableTryButton();
         }  
+    }
+
+    private void GameStateChanhedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+                Initialize();
+                break;
+        }
     }
 
     public void CheckWord()
@@ -78,12 +94,22 @@ public class InputManager : MonoBehaviour
 
     private void SetLevelComplete()
     {
+        UpdateData();
+
         if (GameManager.instance == null)
         {
             Debug.LogWarning("There is no object with GameManager component!");
             return;
         }
         GameManager.instance.SetGameState(GameState.LevelComplete);
+    }
+
+    private void UpdateData()
+    {
+        int scoreToAdd = 6 - currentWordContainerIndex;
+
+        DataManager.instance.IncreaseScore(scoreToAdd);
+        DataManager.instance.AddCoins(scoreToAdd * 3);
     }
 
     public void BackspacePressedCallback()

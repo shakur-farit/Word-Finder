@@ -26,7 +26,7 @@ public class KeyboardKey : MonoBehaviour
         onKeyPressed?.Invoke(letterText.text[0]);
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         keyRenderer.color = Color.white;
         validity = Validity.None;
