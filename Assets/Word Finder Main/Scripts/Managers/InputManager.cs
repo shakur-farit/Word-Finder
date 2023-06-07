@@ -6,12 +6,22 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager instance;
+
     [SerializeField] private WordContainer[] wordContainers;
     [SerializeField] private Button tryButton;
     [SerializeField] private KeyboardColorizer keyboardColorizer;
 
     private int currentWordContainerIndex;
     private bool canAddLetter = true;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void OnEnable()
     {
@@ -43,6 +53,11 @@ public class InputManager : MonoBehaviour
         {
             wordContainers[i].Initialize();           
         }
+    }
+
+    public WordContainer GetCurrentWordContainer()
+    {
+        return wordContainers[currentWordContainerIndex];
     }
 
     private void KeyPressedCallback(char letter)
@@ -85,10 +100,19 @@ public class InputManager : MonoBehaviour
         else
         {
             Debug.Log("WrongWord");
-
-            canAddLetter = true;
-            DisableTryButton();
             currentWordContainerIndex++;
+            DisableTryButton();
+
+            if (currentWordContainerIndex >= wordContainers.Length)
+            {
+                Debug.Log("GameOver");
+                DataManager.instance.ResetScore();
+                GameManager.instance.SetGameState(GameState.GameOver);
+            }
+            else
+                canAddLetter = true;
+            
+            
         }
     }
 
@@ -114,6 +138,9 @@ public class InputManager : MonoBehaviour
 
     public void BackspacePressedCallback()
     {
+        if (!GameManager.instance.IsGameState())
+            return;
+
         bool isRemoveLetter = wordContainers[currentWordContainerIndex].RemoveLetter();
 
         if (isRemoveLetter)

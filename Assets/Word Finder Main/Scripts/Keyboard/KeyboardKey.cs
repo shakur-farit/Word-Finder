@@ -26,6 +26,11 @@ public class KeyboardKey : MonoBehaviour
         onKeyPressed?.Invoke(letterText.text[0]);
     }
 
+    public bool IsUntouched()
+    {
+        return validity == Validity.None;
+    }
+
     public void Initialize()
     {
         keyRenderer.color = Color.white;

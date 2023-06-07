@@ -73,4 +73,10 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("BestScore", bestScore);
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+        SaveData();
+    }
 }
