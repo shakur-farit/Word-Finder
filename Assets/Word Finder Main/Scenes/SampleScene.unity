@@ -2888,6 +2888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secretWord: First
+  wordsText: {fileID: 4900000, guid: 5f11dc35fa4af48dfa3322493d2f22ae, type: 3}
 --- !u!1 &611550117
 GameObject:
   m_ObjectHideFlags: 0
@@ -10661,19 +10662,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2017655597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1688586188}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NextButtonCallback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2017655597
 MonoBehaviour:
   m_ObjectHideFlags: 0
