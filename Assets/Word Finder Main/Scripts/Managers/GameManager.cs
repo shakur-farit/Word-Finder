@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static Action<GameState> onGameStateChanged;
 
-    private GameState gameState;
+    public GameState gameState;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameState = GameState.None;
+        gameState = GameState.Game;
     }
 
     public void SetGameState(GameState gameState)
