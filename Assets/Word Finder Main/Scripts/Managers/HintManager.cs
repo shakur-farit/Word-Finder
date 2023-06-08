@@ -8,11 +8,49 @@ public class HintManager : MonoBehaviour
     [SerializeField] private int letterHintAmount = 5;
     private KeyboardKey[] keys;
 
+    private bool shouldResetHint;
+
     private void Awake()
     {
         keys = keyboard.GetComponentsInChildren<KeyboardKey>();
 
         Debug.Log(keys.Length);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onGameStateChanged += GameStateChanhedCallback;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameStateChanged -= GameStateChanhedCallback;
+    }
+
+    private void GameStateChanhedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Menu:
+
+                break;
+
+            case GameState.Game:
+                if (shouldResetHint)
+                {
+                    letterHintGivenIndices.Clear();
+                    shouldResetHint = false;
+                }
+                break;
+
+            case GameState.LevelComplete:
+                shouldResetHint = true;
+                break;
+
+            case GameState.GameOver:
+                shouldResetHint = true;
+                break;
+        }
     }
 
     public void KeyboardHint()

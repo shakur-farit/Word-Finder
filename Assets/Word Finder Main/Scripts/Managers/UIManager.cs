@@ -8,9 +8,13 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    [SerializeField] private CanvasGroup menuCG;
     [SerializeField] private CanvasGroup gameCG;
     [SerializeField] private CanvasGroup levelCompleteCG;
     [SerializeField] private CanvasGroup gameOverCG;
+
+    [SerializeField] private TextMeshProUGUI menuBestScore;
+    [SerializeField] private TextMeshProUGUI menuCoins;
 
     [SerializeField] private TextMeshProUGUI gameScore;
     [SerializeField] private TextMeshProUGUI gameCoins;
@@ -44,7 +48,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        ShowGameCG();
+        ShowMenuCG();
+        HideGameCG();
         HideLevelCompleteCG();
         HideGameOverCG();
     }
@@ -53,15 +58,21 @@ public class UIManager : MonoBehaviour
     {
         switch (gameState)
         {
-            case GameState.LevelComplete:
-                ShowLevelCompleteCG();
+            case GameState.Menu:
+                ShowMenuCG();
                 HideGameCG();
-                HideGameOverCG();
                 break;
 
             case GameState.Game:
                 ShowGameCG();
+                HideMenuCG();
                 HideLevelCompleteCG();
+                HideGameOverCG();
+                break;
+
+            case GameState.LevelComplete:
+                ShowLevelCompleteCG();
+                HideGameCG();
                 break;
 
             case GameState.GameOver:
@@ -71,8 +82,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void ShowMenuCG()
+    {
+        menuCoins.text = DataManager.instance.GetCoins().ToString();
+        menuBestScore.text = DataManager.instance.GetBestScore().ToString();
+
+        ShowCG(menuCG);
+    }
+
+    private void HideMenuCG()
+    {
+        HideCG(menuCG);
+    }
+
     private void ShowGameCG()
     {
+        gameCoins.text = DataManager.instance.GetCoins().ToString();
+        gameScore.text = DataManager.instance.GetScore().ToString();
+
         ShowCG(gameCG);
     }
 
@@ -94,9 +121,6 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("There is no object with WordManager component.");
             return;
         }
-
-        gameCoins.text = DataManager.instance.GetCoins().ToString();
-        gameScore.text = DataManager.instance.GetScore().ToString();
 
         levelCompleteCoins.text = DataManager.instance.GetCoins().ToString();
         levelCompleteSecretWord.text = WordManager.instance.GetSecretWord();

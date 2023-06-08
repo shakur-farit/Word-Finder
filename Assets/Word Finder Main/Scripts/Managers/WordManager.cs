@@ -12,12 +12,24 @@ public class WordManager : MonoBehaviour
 
     private string filePath;
 
+    private bool shouldResetWord;
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onGameStateChanged += GameStateChanhedCallback;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameStateChanged -= GameStateChanhedCallback;
     }
 
     private void Start()
@@ -38,5 +50,26 @@ public class WordManager : MonoBehaviour
         Debug.Log(lines.Length);
         int randomLineIndex = Random.Range(0, lines.Length);
         secretWord = lines[randomLineIndex].ToUpper();
+
+        shouldResetWord = false;
+    }
+
+    private void GameStateChanhedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+                if (shouldResetWord)
+                    SetSecretWord();
+                break;
+
+            case GameState.LevelComplete:
+                shouldResetWord = true;
+                break;
+
+            case GameState.GameOver:
+                shouldResetWord = true;
+                break;
+        }
     }
 }
