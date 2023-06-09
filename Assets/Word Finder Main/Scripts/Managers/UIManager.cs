@@ -39,11 +39,13 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.onGameStateChanged += GameStateChanhedCallback;
+        DataManager.onCoinsUpdate += UpdateCoinsText;
     }
 
     private void OnDisable()
     {
         GameManager.onGameStateChanged -= GameStateChanhedCallback;
+        DataManager.onCoinsUpdate -= UpdateCoinsText;
     }
 
     private void Start()
@@ -80,6 +82,14 @@ public class UIManager : MonoBehaviour
                 HideGameCG();
                 break;
         }
+    }
+
+    private void UpdateCoinsText()
+    {
+        menuCoins.text = DataManager.instance.GetCoins().ToString();
+        gameCoins.text = menuCoins.text;
+        levelCompleteCoins.text = menuCoins.text;
+        gameOverCoins.text = menuCoins.text;
     }
 
     private void ShowMenuCG()

@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Button tryButton;
     [SerializeField] private KeyboardColorizer keyboardColorizer;
 
+    [SerializeField] private int scoreForWin = 10;
+
     private int currentWordContainerIndex;
 
     private bool canAddLetter = true;
@@ -143,7 +145,7 @@ public class InputManager : MonoBehaviour
 
     private void UpdateData()
     {
-        int scoreToAdd = 6 - currentWordContainerIndex;
+        int scoreToAdd = scoreForWin - currentWordContainerIndex;
 
         DataManager.instance.IncreaseScore(scoreToAdd);
         DataManager.instance.AddCoins(scoreToAdd * 3);

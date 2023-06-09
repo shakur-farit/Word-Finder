@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class DataManager : MonoBehaviour
 {
@@ -11,6 +8,8 @@ public class DataManager : MonoBehaviour
     private int coins;
     private int score;
     private int bestScore;
+
+    public static Action onCoinsUpdate;
 
     private void Awake()
     {
@@ -26,6 +25,8 @@ public class DataManager : MonoBehaviour
     {
         coins += amount;
         SaveData();
+
+        onCoinsUpdate?.Invoke();
     }
 
     public void RemoveCoins(int amount)
@@ -33,6 +34,8 @@ public class DataManager : MonoBehaviour
         coins -= amount;
         coins = Mathf.Max(coins, 0);
         SaveData();
+
+        onCoinsUpdate?.Invoke();
     }
 
     public void IncreaseScore(int amount)
@@ -62,7 +65,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadData()
     {
-        coins = PlayerPrefs.GetInt("Coins", 150);
+        coins = PlayerPrefs.GetInt("Coins", 450);
         score = PlayerPrefs.GetInt("Score");
         bestScore = PlayerPrefs.GetInt("BestScore");
     }
