@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     [SerializeField] private CanvasGroup menuCG;
+    [SerializeField] private CanvasGroup settingsCG;
     [SerializeField] private CanvasGroup gameCG;
     [SerializeField] private CanvasGroup levelCompleteCG;
     [SerializeField] private CanvasGroup gameOverCG;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ShowMenuCG();
+        HideSettingsCG();
         HideGameCG();
         HideLevelCompleteCG();
         HideGameOverCG();
@@ -157,6 +159,16 @@ public class UIManager : MonoBehaviour
     private void HideGameOverCG()
     {
         HideCG(gameOverCG);
+    }
+
+    public void ShowSettingsCG()
+    {
+        ShowCG(settingsCG);
+    }
+
+    public void HideSettingsCG()
+    {
+        HideCG(settingsCG);
     }
 
     private void ShowCG(CanvasGroup cg)
