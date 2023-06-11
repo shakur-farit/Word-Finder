@@ -24,6 +24,13 @@ public class SettingsManager : MonoBehaviour
         SaveStates();
     }
 
+    public void HapticsButtonCallback()
+    {
+        hapticsState = !hapticsState;
+        UpdateHapticsState();
+        SaveStates();
+    }
+
     private void UpdateSoundsState()
     {
         if (soundsState)
@@ -32,24 +39,45 @@ public class SettingsManager : MonoBehaviour
             EnableSounds();
     }
 
+    private void UpdateHapticsState()
+    {
+        if (hapticsState)
+            DisableHaptics();
+        else
+            EnableHaptics();
+    }
+
     private void EnableSounds()
     {
-        //SoundsManager.EnableSouhnds()
+        SoundsManager.instance.EnableSounds();
         soundsImage.color = Color.white;
     }
 
     private void DisableSounds()
     {
-        //SoundsManager.EnableSouhnds()
+        SoundsManager.instance.DisnableSounds();
         soundsImage.color = Color.gray;
     }
     
+    private void EnableHaptics()
+    {
+        HapticsManager.instance.EnableHaptics();
+        hapticsImage.color = Color.white;
+    }
+
+    private void DisableHaptics()
+    {
+        HapticsManager.instance.DisnableHaptics();
+        hapticsImage.color = Color.gray;
+    }
+
     private void LoadStates()
     {
         soundsState = PlayerPrefs.GetInt("Sounds", 1) == 1;
         hapticsState = PlayerPrefs.GetInt("Haptics", 1) == 1;
 
         UpdateSoundsState();
+        UpdateHapticsState();
     }
 
     private void SaveStates()

@@ -19,6 +19,9 @@ public class InputManager : MonoBehaviour
     private bool canAddLetter = true;
     private bool shouldResetInput;
 
+    public static Action onLetterAdded;
+    public static Action onLetterRemoved;
+
     private void Awake()
     {
         if (instance == null)
@@ -73,11 +76,15 @@ public class InputManager : MonoBehaviour
 
         wordContainers[currentWordContainerIndex].Add(letter);
 
+        HapticsManager.Vibrate();
+
         if (wordContainers[currentWordContainerIndex].IsComplete())
         {
             canAddLetter = false;
             EnableTryButton();
-        }  
+        }
+
+        onLetterAdded?.Invoke();
     }
 
     private void GameStateChanhedCallback(GameState gameState)
@@ -162,6 +169,8 @@ public class InputManager : MonoBehaviour
             DisableTryButton();
 
         canAddLetter = true;
+
+        onLetterRemoved?.Invoke();
     }
 
     private void EnableTryButton()
