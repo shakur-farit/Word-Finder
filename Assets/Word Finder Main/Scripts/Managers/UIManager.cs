@@ -96,6 +96,9 @@ public class UIManager : MonoBehaviour
 
     private void ShowMenuCG()
     {
+        if (menuCG == null || DataManager.instance == null)
+            return;
+
         menuCoins.text = DataManager.instance.GetCoins().ToString();
         menuBestScore.text = DataManager.instance.GetBestScore().ToString();
 
@@ -104,11 +107,17 @@ public class UIManager : MonoBehaviour
 
     private void HideMenuCG()
     {
+        if (menuCG == null)
+            return;
+
         HideCG(menuCG);
     }
 
     private void ShowGameCG()
     {
+        if (gameCG == null)
+            return;
+
         gameCoins.text = DataManager.instance.GetCoins().ToString();
         gameScore.text = DataManager.instance.GetScore().ToString();
 
@@ -117,12 +126,18 @@ public class UIManager : MonoBehaviour
 
     private void HideGameCG()
     {
+        if (gameCG == null)
+            return;
+
         HideCG(gameCG);
     }
 
     private void ShowLevelCompleteCG()
     {
-        if(DataManager.instance == null)
+        if (levelCompleteCG == null)
+            return;
+
+        if (DataManager.instance == null)
         {
             Debug.LogWarning("There is no object with DataManager component.");
             return;
@@ -144,11 +159,17 @@ public class UIManager : MonoBehaviour
 
     private void HideLevelCompleteCG()
     {
+        if(levelCompleteCG == null)
+            return;
+
         HideCG(levelCompleteCG);
     }
 
     private void ShowGameOverCG()
     {
+        if(gameOverCG == null)
+            return;
+
         gameOverCoins.text = DataManager.instance.GetCoins().ToString();
         gameOverSecretWord.text = WordManager.instance.GetSecretWord();
         gameOverBestScore.text = DataManager.instance.GetBestScore().ToString();
@@ -158,16 +179,25 @@ public class UIManager : MonoBehaviour
 
     private void HideGameOverCG()
     {
+        if(gameOverCG == null)
+            return;
+
         HideCG(gameOverCG);
     }
 
     public void ShowSettingsCG()
     {
+        if(settingsCG == null)
+            return;
+
         ShowCG(settingsCG);
     }
 
     public void HideSettingsCG()
     {
+        if(settingsCG == null)
+            return;
+
         HideCG(settingsCG);
     }
 
