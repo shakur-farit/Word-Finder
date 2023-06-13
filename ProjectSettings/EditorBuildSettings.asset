@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Word Finder Main/Scenes/LanguageChangeScene.unity
-    guid: 94a053579feb84603b55beef659dd96e
+    path: Assets/WordFinderMain/Scenes/LanguageChangeScene.unity
+    guid: 9cacec71682c7434a89bb0758d877e27
   - enabled: 1
-    path: Assets/Word Finder Main/Scenes/EnglishWordsScene.unity
+    path: Assets/WordFinderMain/Scenes/EnglishWordsScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Word Finder Main/Scenes/RussianWordsScene.unity
+    path: Assets/WordFinderMain/Scenes/RussianWordsScene.unity
     guid: 15421cb49df4c49a9a263241638f52ee
   - enabled: 1
-    path: Assets/Word Finder Main/Scenes/AzerbaijaniWordsScene.unity
+    path: Assets/WordFinderMain/Scenes/AzerbaijaniWordsScene.unity
     guid: bcd6f4706ab754b87a663b375c987e04
   m_configObjects: {}
