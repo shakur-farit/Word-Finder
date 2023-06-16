@@ -16,6 +16,8 @@ public class HintManager : MonoBehaviour
     [SerializeField] private int keyboardHintPrice; 
     [SerializeField] private int letterHintPrice;
 
+    [SerializeField] private int keyBlockingAmount = 3;
+
     private void Awake()
     {
         keys = keyboard.GetComponentsInChildren<KeyboardKey>();
@@ -87,8 +89,11 @@ public class HintManager : MonoBehaviour
         if (t_untouchedKeys.Count <= 0)
             return;
 
-        int randomKeyIndex = Random.Range(0, t_untouchedKeys.Count);
-        t_untouchedKeys[randomKeyIndex].SetInvalid();
+        for (int i = 0; i < keyBlockingAmount; i++)
+        {
+            int randomKeyIndex = Random.Range(0, t_untouchedKeys.Count);
+            t_untouchedKeys[randomKeyIndex].SetInvalid();
+        }
 
         DataManager.instance.RemoveCoins(keyboardHintPrice);
     }
@@ -105,17 +110,20 @@ public class HintManager : MonoBehaviour
             return;
         }
 
-        var letterHitNoGivenIndices = new List<int>();
+        var letterHintNoGivenIndices = new List<int>();
 
-        for (int i = 0; i < letterHintAmount; i++)
+        for (int i = 0; i < 5; i++)
             if (!letterHintGivenIndices.Contains(i))
-                letterHitNoGivenIndices.Add(i);
+            {
+                letterHintNoGivenIndices.Add(i);
+                Debug.Log(letterHintNoGivenIndices[i]);
+            }
 
         WordContainer currentWordContainer = InputManager.instance.GetCurrentWordContainer();
 
         string secretWord = WordManager.instance.GetSecretWord();
 
-        int randomLetterIndex = letterHitNoGivenIndices[Random.Range(0, letterHitNoGivenIndices.Count)];
+        int randomLetterIndex = letterHintNoGivenIndices[Random.Range(0, letterHintNoGivenIndices.Count)];
         letterHintGivenIndices.Add(randomLetterIndex);
 
         currentWordContainer.AddAsHint(randomLetterIndex, secretWord[randomLetterIndex]);
