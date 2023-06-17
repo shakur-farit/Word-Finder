@@ -82,7 +82,7 @@ public class WordContainer : MonoBehaviour
         }
     }
 
-    internal void AddAsHint(int letterIndex, char letter)
+    public void AddAsHint(int letterIndex, char letter)
     {
         letterContainers[letterIndex].SetLetter(letter, true);
     }

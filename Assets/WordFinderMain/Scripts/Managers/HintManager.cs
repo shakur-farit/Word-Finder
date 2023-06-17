@@ -110,18 +110,17 @@ public class HintManager : MonoBehaviour
             return;
         }
 
+        string secretWord = WordManager.instance.GetSecretWord();
+
         var letterHintNoGivenIndices = new List<int>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < secretWord.Length; i++)
             if (!letterHintGivenIndices.Contains(i))
             {
                 letterHintNoGivenIndices.Add(i);
-                Debug.Log(letterHintNoGivenIndices[i]);
             }
 
         WordContainer currentWordContainer = InputManager.instance.GetCurrentWordContainer();
-
-        string secretWord = WordManager.instance.GetSecretWord();
 
         int randomLetterIndex = letterHintNoGivenIndices[Random.Range(0, letterHintNoGivenIndices.Count)];
         letterHintGivenIndices.Add(randomLetterIndex);

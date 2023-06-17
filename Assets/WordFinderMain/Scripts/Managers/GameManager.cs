@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public static Action<GameState> onGameStateChanged;
 
-    public GameState gameState;
+    private GameState gameState;
 
     private void Awake()
     {

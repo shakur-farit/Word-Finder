@@ -1,13 +1,49 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    private int sceneIndex;
+    public static SceneManagerScript instance;
 
-    public void LoadSceneByIndex(int sceneIndex)
+    private static LanguagesState languagesState;
+
+    private void Awake()
     {
-        SceneManager.LoadScene(sceneIndex);
+        if(instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    public void LoadSceneByIndex(int index)
+    {
+        SetLanguageState(index);
+
+        SceneManager.LoadScene(index);
+    }
+
+    private void SetLanguageState(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                languagesState = LanguagesState.English;
+                break;
+
+            case 2:
+                languagesState = LanguagesState.Russian;
+                break;
+
+            case 3:
+                languagesState  = LanguagesState.Azerbaijani;
+                break;
+        }
+    }
+
+    public LanguagesState GetLanguageState()
+    {
+        return languagesState;
     }
 
     public void QuitGame()

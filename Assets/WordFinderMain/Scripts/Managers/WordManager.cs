@@ -31,7 +31,9 @@ public class WordManager : MonoBehaviour
 
     private void Start()
     {
-        filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsEU.txt";
+        ChooseLanguage();
+
+        Debug.Log(filePath);
 
         SetSecretWord();
     }
@@ -66,6 +68,22 @@ public class WordManager : MonoBehaviour
 
             case GameState.GameOver:
                 shouldResetWord = true;
+                break;
+        }
+    }
+
+    private void ChooseLanguage()
+    {
+        switch (SceneManagerScript.instance.GetLanguageState())
+        {
+            case LanguagesState.English:
+                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsEU.txt";
+                break;
+            case LanguagesState.Russian:
+                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsRU.txt";
+                break;
+            case LanguagesState.Azerbaijani:
+                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsAZ.txt";
                 break;
         }
     }

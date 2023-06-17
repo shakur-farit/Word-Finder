@@ -3173,6 +3173,7 @@ MonoBehaviour:
   gameCG: {fileID: 0}
   levelCompleteCG: {fileID: 0}
   gameOverCG: {fileID: 0}
+  helpCG: {fileID: 0}
   menuBestScore: {fileID: 0}
   menuCoins: {fileID: 0}
   gameScore: {fileID: 0}
@@ -4043,3 +4044,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1ad377e218a49168b2dcf2909ac6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  languagesState: 1
