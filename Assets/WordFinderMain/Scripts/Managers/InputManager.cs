@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyboardColorizer keyboardColorizer;
 
     [SerializeField] private int scoreForWin = 10;
+    [SerializeField] private int coinsForWin = 30;
 
     private int currentWordContainerIndex;
 
@@ -151,9 +152,10 @@ public class InputManager : MonoBehaviour
     private void UpdateData()
     {
         int scoreToAdd = scoreForWin - currentWordContainerIndex;
+        int coinsToAdd = coinsForWin - currentWordContainerIndex;
 
         DataManager.instance.IncreaseScore(scoreToAdd);
-        DataManager.instance.AddCoins(scoreToAdd * 3);
+        DataManager.instance.AddCoins(coinsToAdd);
     }
 
     public void BackspacePressedCallback()

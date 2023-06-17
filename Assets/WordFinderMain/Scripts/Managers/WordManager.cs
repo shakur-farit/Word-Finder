@@ -48,7 +48,7 @@ public class WordManager : MonoBehaviour
         string[] lines = File.ReadAllLines(filePath);
         Debug.Log(lines.Length);
         int randomLineIndex = Random.Range(0, lines.Length);
-        secretWord = lines[randomLineIndex].ToUpper();
+        secretWord = lines[randomLineIndex];
 
         shouldResetWord = false;
     }
