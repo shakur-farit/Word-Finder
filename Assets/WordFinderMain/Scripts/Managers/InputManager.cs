@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class InputManager : MonoBehaviour
 {
@@ -135,6 +136,12 @@ public class InputManager : MonoBehaviour
             
             
         }
+    }
+
+    public List<char> foundLetter = new List<char>();
+    public void SetFoundLetter(char letter)
+    {
+        foundLetter.Add(letter);
     }
 
     private void SetLevelComplete()
