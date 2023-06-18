@@ -68,7 +68,7 @@ public class WordContainer : MonoBehaviour
             if (letterToCheck == secretWord[i])
             {
                 letterContainers[i].SetValid();
-                InputManager.instance.SetFindedLetter(letterToCheck);
+                InputManager.instance.SetFoundLetter(letterToCheck);
                 chars.Remove(letterToCheck);
             }
             else if (chars.Contains(letterToCheck))
