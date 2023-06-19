@@ -99,6 +99,7 @@ public class HintManager : MonoBehaviour
     }
 
     List<int> letterHintGivenIndices = new List<int>();
+    List<char> hintedLetter = new List<char>();
     public void LetterHint()
     {
         if (DataManager.instance.GetCoins() < letterHintPrice)
@@ -111,21 +112,44 @@ public class HintManager : MonoBehaviour
         }
 
         string secretWord = WordManager.instance.GetSecretWord();
-
-        var letterHintNoGivenIndices = new List<int>();
-
-        for (int i = 0; i < secretWord.Length; i++)
-            if (!letterHintGivenIndices.Contains(i))
-            {
-                letterHintNoGivenIndices.Add(i);
-            }
-
+        List<int> letterHintNoGivenIndices = new List<int>();
         WordContainer currentWordContainer = InputManager.instance.GetCurrentWordContainer();
 
-        int randomLetterIndex = letterHintNoGivenIndices[Random.Range(0, letterHintNoGivenIndices.Count)];
-        letterHintGivenIndices.Add(randomLetterIndex);
+        if (InputManager.instance.foundLetter.Count <= 0)
+        {
+            for (int i = 0; i < secretWord.Length; i++)
+                if (!letterHintGivenIndices.Contains(i))
+                {
+                    letterHintNoGivenIndices.Add(i);
+                }
 
-        currentWordContainer.AddAsHint(randomLetterIndex, secretWord[randomLetterIndex]);
+            int randomLetterIndex = letterHintNoGivenIndices[Random.Range(0, letterHintNoGivenIndices.Count)];
+            letterHintGivenIndices.Add(randomLetterIndex);
+
+            currentWordContainer.AddAsHint(randomLetterIndex, secretWord[randomLetterIndex]);
+        }
+        else
+        {
+            //char unfoundedLetter = ' ';
+            int indexOfUnfoundedLetter = 0;
+            
+
+            for (int i = 0; i < secretWord.Length; i++)
+            {
+                for (int j = 0; j < InputManager.instance.foundLetter.Count; j++)
+                {
+                    if (secretWord[i] != InputManager.instance.foundLetter[j] && !hintedLetter.Contains(secretWord[i]))
+                    {
+                        //unfoundedLetter = secretWord[i];
+                        indexOfUnfoundedLetter = i;
+                        hintedLetter.Add(secretWord[i]);
+                        Debug.Log("Unfounded letter is " + secretWord[indexOfUnfoundedLetter] + " in " + (indexOfUnfoundedLetter + 1));
+                    }
+                }
+            }
+
+            currentWordContainer.AddAsHint(indexOfUnfoundedLetter, secretWord[indexOfUnfoundedLetter]);
+        }
 
         DataManager.instance.RemoveCoins(letterHintPrice);
     }
