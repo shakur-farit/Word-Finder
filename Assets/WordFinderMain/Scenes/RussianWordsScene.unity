@@ -4154,7 +4154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboard: {fileID: 864654800}
-  letterHintAmount: 3
+  letterHintAmount: 9
   keyboardPriceText: {fileID: 1704218220}
   letterPriceText: {fileID: 638169863}
   keyboardHintPrice: 50
@@ -8678,7 +8678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1056420275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10306,7 +10306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1237079886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10698,7 +10698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1261488174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17136,7 +17136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &4430496349529816759
 CanvasRenderer:
   m_ObjectHideFlags: 0
