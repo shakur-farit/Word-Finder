@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class HintManager : MonoBehaviour
 {
@@ -99,8 +100,7 @@ public class HintManager : MonoBehaviour
     }
 
     List<int> letterHintGivenIndices = new List<int>();
-    //List<char> hintedLetter = new List<char>();
-    //int indexOfUnfoundedLetter = 0;
+    int indexOfUnfoundedLetter = -1;
     public void LetterHint()
     {
         if (DataManager.instance.GetCoins() < letterHintPrice)
@@ -108,23 +108,20 @@ public class HintManager : MonoBehaviour
 
         if (letterHintGivenIndices.Count >= letterHintAmount)
         {
-            Debug.Log("All hits have gone");
+            Debug.Log("All hints have been used");
             return;
         }
 
         string secretWord = WordManager.instance.GetSecretWord();
-        List<int> letterHintNoGivenIndices = new List<int>();
         WordContainer currentWordContainer = InputManager.instance.GetCurrentWordContainer();
 
         if (InputManager.instance.foundLetter.Count <= 0)
         {
-            for (int i = 0; i < secretWord.Length; i++)
-                if (!letterHintGivenIndices.Contains(i))
-                {
-                    letterHintNoGivenIndices.Add(i);
-                }
+            var letterHintNoGivenIndices = Enumerable.Range(0, secretWord.Length)
+                .Where(i => !letterHintGivenIndices.Contains(i))
+                .ToList();
 
-            if(letterHintNoGivenIndices.Count <= 0)
+            if (letterHintNoGivenIndices.Count <= 0)
             {
                 Debug.Log("Nothing to hint");
                 return;
@@ -137,39 +134,20 @@ public class HintManager : MonoBehaviour
         }
         else
         {
-            //char unfoundedLetter = ' ';
+            var unfoundedLetterIndices = Enumerable.Range(indexOfUnfoundedLetter + 1, secretWord.Length - indexOfUnfoundedLetter - 1)
+                .Where(i => !InputManager.instance.foundLetter.Contains(secretWord[i]))
+                .ToList();
 
+            if (unfoundedLetterIndices.Count <= 0)
+            {
+                Debug.Log("Nothing to hint");
+                return;
+            }
 
-
-            //for (int i = 0; i < secretWord.Length; i++)
-            //{
-            //    for (int j = 0; j < InputManager.instance.foundLetter.Count; j++)
-            //    {
-            //        if (secretWord[i] != InputManager.instance.foundLetter[j])
-            //        {
-            //            //unfoundedLetter = secretWord[i];
-            //            indexOfUnfoundedLetter = i;
-            //            Debug.Log("Unfounded letter is " + secretWord[indexOfUnfoundedLetter] + " in " + (indexOfUnfoundedLetter + 1));
-            //        }
-            //        break;
-            //    }
-            //    break;
-            //}
-
-            int indexOfUnfoundedLetter = 0;
-            List<int> t_letterHintNoGivenIndices = new List<int>();
-
-            for (int i = 0; i < secretWord.Length; i++)
-                for (int j = 0; j < InputManager.instance.foundLetter.Count; j++)
-                    if (secretWord[i] != InputManager.instance.foundLetter[j] && !letterHintGivenIndices.Contains(i))
-                    {
-                    letterHintNoGivenIndices.Add(i);
-                        indexOfUnfoundedLetter = i;
-                    }
-
-            letterHintGivenIndices.Add(indexOfUnfoundedLetter);
-
-            currentWordContainer.AddAsHint(indexOfUnfoundedLetter, secretWord[indexOfUnfoundedLetter]);
+            int unfoundedLetterIndex = unfoundedLetterIndices.First();
+            indexOfUnfoundedLetter = unfoundedLetterIndex;
+            Debug.Log("Unfounded letter is " + secretWord[indexOfUnfoundedLetter] + " in " + (indexOfUnfoundedLetter + 1));
+            currentWordContainer.AddAsHint(unfoundedLetterIndex, secretWord[unfoundedLetterIndex]);
         }
 
         DataManager.instance.RemoveCoins(letterHintPrice);
