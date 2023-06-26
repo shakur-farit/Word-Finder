@@ -141,6 +141,7 @@ public class HintManager : MonoBehaviour
             if (unfoundedLetterIndices.Count <= 0)
             {
                 Debug.Log("Nothing to hint");
+                UIManager.instance.ShowNothingToHintCG();
                 return;
             }
 

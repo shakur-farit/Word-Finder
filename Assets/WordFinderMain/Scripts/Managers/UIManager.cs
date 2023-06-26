@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup levelCompleteCG;
     [SerializeField] private CanvasGroup gameOverCG;
     [SerializeField] private CanvasGroup helpCG;
+    [SerializeField] private CanvasGroup nothingToHintCG;
 
     [SerializeField] private TextMeshProUGUI menuBestScore;
     [SerializeField] private TextMeshProUGUI menuCoins;
@@ -55,6 +56,7 @@ public class UIManager : MonoBehaviour
         HideLevelCompleteCG();
         HideGameOverCG();
         HideHelpCG();
+        HideNothingToHintCG();
     }
 
     private void GameStateChanhedCallback(GameState gameState)
@@ -214,6 +216,22 @@ public class UIManager : MonoBehaviour
             return;
 
         HideCG(helpCG);
+    }
+
+    public void ShowNothingToHintCG()
+    {
+        if (nothingToHintCG == null)
+            return;
+
+        ShowCG(nothingToHintCG);
+    }
+
+    public void HideNothingToHintCG()
+    {
+        if (nothingToHintCG == null)
+            return;
+
+        HideCG(nothingToHintCG);
     }
 
     private void ShowCG(CanvasGroup cg)
