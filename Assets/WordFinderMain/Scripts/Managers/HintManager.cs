@@ -92,7 +92,10 @@ public class HintManager : MonoBehaviour
                 t_untouchedKeys.Remove(untouchedKeys[i]);
 
         if (t_untouchedKeys.Count <= 0)
+        {
+            UIManager.instance.ShowNothingToHintCG();
             return;
+        }
 
         for (int i = 0; i < keyBlockingAmount; i++)
         {
@@ -130,6 +133,7 @@ public class HintManager : MonoBehaviour
 
             if (letterHintNoGivenIndices.Count <= 0)
             {
+                UIManager.instance.ShowNothingToHintCG();
                 Debug.Log("Nothing to hint");
                 return;
             }
