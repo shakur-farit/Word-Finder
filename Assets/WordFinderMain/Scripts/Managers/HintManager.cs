@@ -6,6 +6,7 @@ using System.Linq;
 public class HintManager : MonoBehaviour
 {
     [SerializeField] private GameObject keyboard;
+    [SerializeField] private bool hasLimitHint = false;
     [SerializeField] private int letterHintAmount = 5;
     private KeyboardKey[] keys;
 
@@ -71,7 +72,10 @@ public class HintManager : MonoBehaviour
     public void KeyboardHint()
     {
         if (DataManager.instance.GetCoins() < keyboardHintPrice)
+        {
+            UIManager.instance.ShowGetCoinsForWatchingAD_CG();
             return;
+        }
 
         string secretWord = WordManager.instance.GetSecretWord();
 
@@ -104,9 +108,12 @@ public class HintManager : MonoBehaviour
     public void LetterHint()
     {
         if (DataManager.instance.GetCoins() < letterHintPrice)
+        {
+            UIManager.instance.ShowGetCoinsForWatchingAD_CG();
             return;
+        }
 
-        if (letterHintGivenIndices.Count >= letterHintAmount)
+        if (hasLimitHint && letterHintGivenIndices.Count >= letterHintAmount)
         {
             Debug.Log("All hints have been used");
             return;
