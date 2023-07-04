@@ -156,6 +156,11 @@ public class InputManager : MonoBehaviour
         GameManager.instance.SetGameState(GameState.LevelComplete);
     }
 
+    public void ClearFoundLetterList()
+    {
+        foundLetter.Clear();
+    }
+
     private void UpdateData()
     {
         int scoreToAdd = scoreForWin - currentWordContainerIndex;

@@ -125,11 +125,15 @@ public class HintManager : MonoBehaviour
         string secretWord = WordManager.instance.GetSecretWord();
         WordContainer currentWordContainer = InputManager.instance.GetCurrentWordContainer();
 
+        Debug.Log(InputManager.instance.foundLetter.Count);
+
         if (InputManager.instance.foundLetter.Count <= 0)
         {
             var letterHintNoGivenIndices = Enumerable.Range(0, secretWord.Length)
                 .Where(i => !letterHintGivenIndices.Contains(i))
                 .ToList();
+
+            Debug.Log(letterHintNoGivenIndices.Count);
 
             if (letterHintNoGivenIndices.Count <= 0)
             {

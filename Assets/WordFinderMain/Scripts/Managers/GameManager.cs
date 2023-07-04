@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void NextButtonCallback()
     {
         SetGameState(GameState.Game);
+        InputManager.instance.ClearFoundLetterList();
     }
 
     public void BackButtonCallback()
