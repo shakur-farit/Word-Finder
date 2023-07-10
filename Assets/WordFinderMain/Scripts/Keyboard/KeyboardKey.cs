@@ -22,6 +22,8 @@ public class KeyboardKey : MonoBehaviour
     private void SendKeyPressedEvent()
     {
         onKeyPressed?.Invoke(letterText.text[0]);
+
+        Debug.Log(letterText.text[0]);
     }
 
     public bool IsUntouched()
