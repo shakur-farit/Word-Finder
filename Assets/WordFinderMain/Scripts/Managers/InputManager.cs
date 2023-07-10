@@ -180,6 +180,8 @@ public class InputManager : MonoBehaviour
         if (isRemoveLetter)
             DisableTryButton();
 
+        HapticsManager.Vibrate();
+
         canAddLetter = true;
 
         onLetterRemoved?.Invoke();

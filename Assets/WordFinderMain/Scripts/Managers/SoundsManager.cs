@@ -9,7 +9,7 @@ public class SoundsManager : MonoBehaviour
     [SerializeField] private AudioSource gameOverSound;
     [SerializeField] private AudioSource letterAddedSound;
     [SerializeField] private AudioSource letterRemovedSound;
-    [SerializeField] private AudioSource backgroundSound;
+    //[SerializeField] private AudioSource backgroundSound;
 
     private void Awake()
     {
@@ -53,15 +53,15 @@ public class SoundsManager : MonoBehaviour
         letterRemovedSound.volume = 0f;
     }
 
-    public void PlayBackgroundSound()
-    {
-        backgroundSound.volume = 1f;
-    }
+    //public void PlayBackgroundSound()
+    //{
+    //    backgroundSound.volume = 1f;
+    //}
 
-    public void StopBackgroundSound()
-    {
-        backgroundSound.volume = 0f;
-    }
+    //public void StopBackgroundSound()
+    //{
+    //    backgroundSound.volume = 0f;
+    //}
 
     private void GameStateChangedCallback(GameState gameState)
     {

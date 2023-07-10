@@ -177,6 +177,9 @@ public class UIManager : MonoBehaviour
         gameOverSecretWord.text = WordManager.instance.GetSecretWord();
         gameOverBestScore.text = DataManager.instance.GetBestScore().ToString();
 
+        HapticsManager.Vibrate();
+
+
         ShowCG(gameOverCG);
     }
 

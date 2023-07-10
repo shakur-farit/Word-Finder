@@ -28,6 +28,8 @@ public class HapticsManager : MonoBehaviour
     {
         if (instance.HapticsEnabled())
             Taptic.Light();
+
+        Debug.Log("Is Vibrate");
     }
 
     private bool HapticsEnabled()
