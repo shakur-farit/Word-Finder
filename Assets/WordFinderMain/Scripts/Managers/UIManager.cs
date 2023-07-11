@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverSecretWord;
     [SerializeField] private TextMeshProUGUI gameOverBestScore;
 
+    [SerializeField] ButtonsAnimation GetCoinsButton;
+    [SerializeField] ButtonsAnimation LetterHintButton;
+
     private void Awake()
     {
         if (instance == null)
@@ -125,6 +128,7 @@ public class UIManager : MonoBehaviour
         gameScore.text = DataManager.instance.GetScore().ToString();
 
         ShowCG(gameCG);
+        LetterHintButton.StartAnimation();
     }
 
     private void HideGameCG()
@@ -133,6 +137,7 @@ public class UIManager : MonoBehaviour
             return;
 
         HideCG(gameCG);
+        LetterHintButton.StopAnimation();
     }
 
     private void ShowLevelCompleteCG()
@@ -245,6 +250,7 @@ public class UIManager : MonoBehaviour
             return;
 
         ShowCG(getCoinsForWatchingAD_CG);
+        GetCoinsButton.StartAnimation();
     }
 
     public void HideGetCoinsForWatchingAD_CG()
@@ -253,6 +259,7 @@ public class UIManager : MonoBehaviour
             return;
 
         HideCG(getCoinsForWatchingAD_CG);
+        GetCoinsButton.StopAnimation();
     }
 
     private void ShowCG(CanvasGroup cg)
