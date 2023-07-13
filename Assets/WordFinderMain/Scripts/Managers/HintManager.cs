@@ -97,10 +97,18 @@ public class HintManager : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < keyBlockingAmount; i++)
+        var usedKeyIndexesList = new List<int>();
+        int j = 0;
+        while (j < keyBlockingAmount)
         {
             int randomKeyIndex = Random.Range(0, t_untouchedKeys.Count);
+            if (usedKeyIndexesList.Contains(randomKeyIndex) && t_untouchedKeys.Count >= secretWord.Length)
+            {
+                continue;
+            }
+            usedKeyIndexesList.Add(randomKeyIndex);
             t_untouchedKeys[randomKeyIndex].SetInvalid();
+            j++;
         }
 
         DataManager.instance.RemoveCoins(keyboardHintPrice);

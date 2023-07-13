@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void NextButtonCallback()
-    {
-        AdsManager.instance.interstitialAd.ShowAd();
+    {   
         SetGameState(GameState.Game);
         InputManager.instance.ClearFoundLetterList();
+        //AdsManager.instance.interstitialAd.ShowAd();
     }
 
     //public void BackButtonCallback()

@@ -6784,7 +6784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -5177388603050735206, guid: dbd5bebd6ef314c4c9fd9f2ba58c9d22, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6793,7 +6793,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.13
+  m_PixelsPerUnitMultiplier: 0.7
 --- !u!222 &879158668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11374,6 +11374,7 @@ MonoBehaviour:
   helpCG: {fileID: 1261488176}
   nothingToHintCG: {fileID: 892029963770339146}
   getCoinsForWatchingAD_CG: {fileID: 6744396071465984635}
+  sceneTransitionCG: {fileID: 0}
   menuBestScore: {fileID: 943461038}
   menuCoins: {fileID: 744236122}
   gameScore: {fileID: 1223761183}

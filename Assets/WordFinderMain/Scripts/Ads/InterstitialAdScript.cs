@@ -64,7 +64,6 @@ public class InterstitialAdScript : MonoBehaviour
         }
 
         isAdShowed = true;
-        Debug.Log("Ad Shpwing");
 
         yield return new WaitForSeconds(adTiming);
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup helpCG;
     [SerializeField] private CanvasGroup nothingToHintCG;
     [SerializeField] private CanvasGroup getCoinsForWatchingAD_CG;
+    [SerializeField] private CanvasGroup sceneTransitionCG;
 
     [SerializeField] private TextMeshProUGUI menuBestScore;
     [SerializeField] private TextMeshProUGUI menuCoins;
@@ -62,6 +64,8 @@ public class UIManager : MonoBehaviour
         HideHelpCG();
         HideNothingToHintCG();
         HideGetCoinsForWatchingAD_CG();
+
+        StartCoroutine(LoadSceneTransition());
     }
 
     private void GameStateChanhedCallback(GameState gameState)
@@ -260,6 +264,31 @@ public class UIManager : MonoBehaviour
 
         HideCG(getCoinsForWatchingAD_CG);
         GetCoinsButton.StopAnimation();
+    }
+
+    private void ShowSceneTransitionCG()
+    {
+        if (sceneTransitionCG == null)
+            return;
+
+        ShowCG(sceneTransitionCG);
+    }
+
+    private void HideSceneTransitionCG()
+    {
+        if (sceneTransitionCG == null)
+            return;
+
+        HideCG(sceneTransitionCG);
+    }
+
+    IEnumerator LoadSceneTransition()
+    {
+        ShowSceneTransitionCG();
+
+        yield return new WaitForSeconds(3);
+
+        HideSceneTransitionCG();
     }
 
     private void ShowCG(CanvasGroup cg)

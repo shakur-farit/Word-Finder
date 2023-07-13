@@ -7,7 +7,7 @@ public class WordManager : MonoBehaviour
 
     [SerializeField] private string secretWord;
 
-    private string filePath;
+    private string fileText;
 
     private bool shouldResetWord;
 
@@ -33,8 +33,6 @@ public class WordManager : MonoBehaviour
     {
         ChooseLanguage();
 
-        Debug.Log(filePath);
-
         SetSecretWord();
     }
 
@@ -45,7 +43,7 @@ public class WordManager : MonoBehaviour
 
     private void SetSecretWord()
     {
-        string[] lines = File.ReadAllLines(filePath);
+        string[] lines = fileText.Split("\r\n");
         Debug.Log(lines.Length);
         int randomLineIndex = Random.Range(0, lines.Length);
         secretWord = lines[randomLineIndex];
@@ -77,14 +75,32 @@ public class WordManager : MonoBehaviour
         switch (SceneManagerScript.instance.GetLanguageState())
         {
             case LanguagesState.English:
-                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsEU.txt";
+                LoadWordsEU();
                 break;
             case LanguagesState.Russian:
-                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsRU.txt";
+                LoadWordsRU();
                 break;
             case LanguagesState.Azerbaijani:
-                filePath = Application.dataPath + "/WordFinderMain/Resources/WordsLibrary/wordsAZ.txt";
+                LoadWordsAZ();
                 break;
         }
+    }
+
+    private void LoadWordsEU()
+    {
+        TextAsset asset = Resources.Load<TextAsset>("wordsEU");
+        fileText = asset.text;
+    }
+
+    private void LoadWordsAZ()
+    {
+        TextAsset asset = Resources.Load<TextAsset>("wordsAZ");
+        fileText = asset.text;
+    }
+
+    private void LoadWordsRU()
+    {
+        TextAsset asset = Resources.Load<TextAsset>("wordsRU");
+        fileText = asset.text;
     }
 }
