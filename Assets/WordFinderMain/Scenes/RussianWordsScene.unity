@@ -4500,6 +4500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secretWord: First
+  languagesState: 2
 --- !u!1 &569542774
 GameObject:
   m_ObjectHideFlags: 0
