@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //ShowMenuCG();
+        ShowMenuCG();
         HideSettingsCG();
         ShowGameCG();
         HideLevelCompleteCG();

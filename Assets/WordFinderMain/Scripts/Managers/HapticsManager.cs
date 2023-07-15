@@ -27,7 +27,7 @@ public class HapticsManager : MonoBehaviour
     public static void Vibrate()
     {
         if (instance.HapticsEnabled())
-            Taptic.Light();
+            Handheld.Vibrate();
 
         Debug.Log("Is Vibrate");
     }

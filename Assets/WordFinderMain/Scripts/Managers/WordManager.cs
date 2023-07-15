@@ -6,6 +6,7 @@ public class WordManager : MonoBehaviour
     public static WordManager instance;
 
     [SerializeField] private string secretWord;
+    [SerializeField] private LanguagesState languagesState = LanguagesState.None;
 
     private string fileText;
 
@@ -72,7 +73,7 @@ public class WordManager : MonoBehaviour
 
     private void ChooseLanguage()
     {
-        switch (SceneManagerScript.instance.GetLanguageState())
+        switch (languagesState)
         {
             case LanguagesState.English:
                 LoadWordsEU();

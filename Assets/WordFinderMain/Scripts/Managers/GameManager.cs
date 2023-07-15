@@ -30,15 +30,20 @@ public class GameManager : MonoBehaviour
 
     public void NextButtonCallback()
     {   
-        SetGameState(GameState.Game);
-        InputManager.instance.ClearFoundLetterList();
-        //AdsManager.instance.interstitialAd.ShowAd();
+        PlayButtonCallback();
+        AdsManager.instance.interstitialAd.ShowAd();
     }
 
-    //public void BackButtonCallback()
-    //{
-    //    SetGameState(GameState.Menu);
-    //}
+    public void PlayButtonCallback()
+    {
+        SetGameState(GameState.Game);
+        InputManager.instance.ClearFoundLetterList();
+    }
+
+    public void BackButtonCallback()
+    {
+        SetGameState(GameState.Menu);
+    }
 
     public bool IsGameState()
     {

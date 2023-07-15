@@ -6,8 +6,6 @@ public class SceneManagerScript : MonoBehaviour
 {
     public static SceneManagerScript instance;
 
-    private static LanguagesState languagesState;
-
     private void Awake()
     {
         if(instance == null)
@@ -18,32 +16,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void LoadSceneByIndex(int index)
     {
-        SetLanguageState(index);
-
         SceneManager.LoadScene(index);
-    }
-
-    private void SetLanguageState(int index)
-    {
-        switch (index)
-        {
-            case 1:
-                languagesState = LanguagesState.English;
-                break;
-
-            case 2:
-                languagesState = LanguagesState.Russian;
-                break;
-
-            case 3:
-                languagesState  = LanguagesState.Azerbaijani;
-                break;
-        }
-    }
-
-    public LanguagesState GetLanguageState()
-    {
-        return languagesState;
     }
 
     public void QuitGame()
