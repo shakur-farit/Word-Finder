@@ -164,7 +164,7 @@ public class InputManager : MonoBehaviour
     private void UpdateData()
     {
         int scoreToAdd = scoreForWin - currentWordContainerIndex;
-        int coinsToAdd = coinsForWin - currentWordContainerIndex;
+        int coinsToAdd = coinsForWin - (currentWordContainerIndex*10);
 
         DataManager.instance.IncreaseScore(scoreToAdd);
         DataManager.instance.AddCoins(coinsToAdd);
