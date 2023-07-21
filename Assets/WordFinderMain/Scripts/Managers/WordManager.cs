@@ -12,6 +12,8 @@ public class WordManager : MonoBehaviour
 
     private bool shouldResetWord;
 
+    public string FileText { get { return fileText; } }
+
     private void Awake()
     {
         if (instance == null)

@@ -9,12 +9,15 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private WordContainer[] wordContainers;
     [SerializeField] private Button tryButton;
+    [SerializeField] private Button notTheWordButton;
     [SerializeField] private KeyboardColorizer keyboardColorizer;
 
     [SerializeField] private int scoreForWin = 10;
     [SerializeField] private int coinsForWin = 30;
 
     private int currentWordContainerIndex;
+
+    private bool notTheWord;
 
     private bool canAddLetter = true;
     private bool shouldResetInput;
@@ -47,6 +50,7 @@ public class InputManager : MonoBehaviour
         Initialize();
 
         tryButton.interactable = false;
+        notTheWordButton.gameObject.SetActive(false);
     }
 
     private void Initialize()
@@ -54,7 +58,7 @@ public class InputManager : MonoBehaviour
         currentWordContainerIndex = 0;
         canAddLetter = true;
 
-        DisableTryButton();
+        DisableButton();
 
         for (int i = 0; i < wordContainers.Length; i++)
         {
@@ -81,7 +85,8 @@ public class InputManager : MonoBehaviour
         if (wordContainers[currentWordContainerIndex].IsComplete())
         {
             canAddLetter = false;
-            EnableTryButton();
+            notTheWord = IsThereWord();
+            EnableButton();
         }
 
         onLetterAdded?.Invoke();
@@ -123,7 +128,7 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("WrongWord");
             currentWordContainerIndex++;
-            DisableTryButton();
+            DisableButton();
 
             if (currentWordContainerIndex >= wordContainers.Length)
             {
@@ -136,6 +141,25 @@ public class InputManager : MonoBehaviour
             
             
         }
+    }
+
+    private bool IsThereWord()
+    {
+        string[] lines = WordManager.instance.FileText.Split("\r\n");
+        string wordToCheck = wordContainers[currentWordContainerIndex].GetWord();
+
+        for(int i = 0; i< lines.Length; i++)
+        {
+            string wordFromFile = lines[i].ToUpper();
+
+            if (wordToCheck == wordFromFile)
+            {   
+                Debug.Log(wordToCheck + " - " + lines[i]);
+                return false;     
+            }
+        }
+
+        return true;
     }
 
     public List<char> foundLetter = new List<char>();
@@ -178,7 +202,7 @@ public class InputManager : MonoBehaviour
         bool isRemoveLetter = wordContainers[currentWordContainerIndex].RemoveLetter();
 
         if (isRemoveLetter)
-            DisableTryButton();
+            DisableButton();
 
         HapticsManager.Vibrate();
 
@@ -187,13 +211,17 @@ public class InputManager : MonoBehaviour
         onLetterRemoved?.Invoke();
     }
 
-    private void EnableTryButton()
+    private void EnableButton()
     {
-        tryButton.interactable = true;
+        if (notTheWord)
+            notTheWordButton.gameObject.SetActive(true);
+        else
+            tryButton.interactable = true;
     }
 
-    private void DisableTryButton()
+    private void DisableButton()
     {
+        notTheWordButton.gameObject.SetActive(false);
         tryButton.interactable = false;
     }
 }

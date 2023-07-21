@@ -100,26 +100,23 @@ public class UIManager : MonoBehaviour
     private void UpdateCoinsText()
     {
         int currentCoins = DataManager.instance.GetCoins();
-        int targetCoins = currentCoins; // No change in coins, just to initiate the tween
+        int targetCoins = currentCoins;
 
-        // If the coins text already contains a value, parse it to the targetCoins variable
         if (!string.IsNullOrEmpty(menuCoins.text))
             int.TryParse(menuCoins.text, out targetCoins);
 
-        // Check if there's actually a change in coins
         if (targetCoins != currentCoins)
         {
-            // Smoothly tween the coins text to the new value
-            DOTween.To(() => targetCoins, x => targetCoins = x, currentCoins, 0.5f)
+            DOTween.To(() => targetCoins, x => targetCoins = x, currentCoins, 1f)
                 .OnUpdate(() => {
-                    // Update the coins text while the tween is ongoing
+
                     menuCoins.text = targetCoins.ToString();
                     gameCoins.text = targetCoins.ToString();
                     levelCompleteCoins.text = targetCoins.ToString();
                     gameOverCoins.text = targetCoins.ToString();
                 })
                 .OnComplete(() => {
-                    // Update the coins text one last time when the tween completes to ensure accuracy
+
                     menuCoins.text = currentCoins.ToString();
                     gameCoins.text = currentCoins.ToString();
                     levelCompleteCoins.text = currentCoins.ToString();
