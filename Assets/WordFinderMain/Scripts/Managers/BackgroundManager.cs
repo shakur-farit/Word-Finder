@@ -36,6 +36,7 @@ public class BackgroundManager : MonoBehaviour
 
             lightIcon.enabled = false;
             darkIcon.enabled = true;
+            
         }
 
         isLightTheme = !isLightTheme;

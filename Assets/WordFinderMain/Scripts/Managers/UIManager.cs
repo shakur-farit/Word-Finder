@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         HideNothingToHintCG();
         HideGetCoinsForWatchingAD_CG();
 
-        StartCoroutine(LoadSceneTransition());
+        StartCoroutine(LoadSceneTransition());        
     }
 
     private void GameStateChanhedCallback(GameState gameState)
