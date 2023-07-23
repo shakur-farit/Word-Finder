@@ -4274,6 +4274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1569233061770355623, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
+      propertyPath: rewardAmount
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
 --- !u!1001 &2004707526404524667
