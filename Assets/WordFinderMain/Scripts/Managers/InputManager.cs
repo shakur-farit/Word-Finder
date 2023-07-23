@@ -145,7 +145,11 @@ public class InputManager : MonoBehaviour
 
     private bool IsThereWord()
     {
+#if UNITY_EDITOR_WIN
         string[] lines = WordManager.instance.FileText.Split("\r\n");
+#elif UNITY_EDITOR_OSX
+        string[] lines = WordManager.instance.FileText.Split("\n");
+#endif
         string wordToCheck = wordContainers[currentWordContainerIndex].GetWord();
 
         for(int i = 0; i< lines.Length; i++)
