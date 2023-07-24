@@ -13,10 +13,14 @@ public class BackgroundManager : MonoBehaviour
 
     private bool isLightTheme = true;
 
+    private float hue = 179;
+
     private void Start()
     {
         darkTheme.enabled = false;
         lightIcon.enabled = false;
+
+        lightTheme.color = Color.HSVToRGB(hue / 360, 1f, 1f);
     }
 
     public void ChangeTheme()
@@ -36,8 +40,17 @@ public class BackgroundManager : MonoBehaviour
 
             lightIcon.enabled = false;
             darkIcon.enabled = true;
+
+            SetColor();
+            
         }
 
         isLightTheme = !isLightTheme;
+    }
+
+    void SetColor()
+    {
+        hue = Random.Range(0, 255);
+        lightTheme.color = Color.HSVToRGB(hue / 360f, 1f, 1f);
     }
 }

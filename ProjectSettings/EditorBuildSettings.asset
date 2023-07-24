@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/WordFinderMain/Scenes/LanguageChangeScene.unity
     guid: 9cacec71682c7434a89bb0758d877e27
   - enabled: 1
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/WordFinderMain/Scenes/RussianWordsScene.unity
     guid: e21e84e9c2e77df43bc6aa7330bf08af
-  - enabled: 0
+  - enabled: 1
     path: Assets/WordFinderMain/Scenes/AzeriWordsScene.unity
     guid: 6c9e5aa0aad333b4ab96383aeee01eaa
   m_configObjects: {}
