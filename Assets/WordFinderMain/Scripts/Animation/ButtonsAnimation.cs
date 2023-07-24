@@ -27,8 +27,6 @@ public class ButtonsAnimation : MonoBehaviour
         {
             animator.Play("Vibration");
 
-            Debug.Log("Start Anim");
-
             animator.Play("Idle");
 
             yield return new WaitForSeconds(waitingTime);
