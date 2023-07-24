@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class UIManager : MonoBehaviour
         HideNothingToHintCG();
         HideGetCoinsForWatchingAD_CG();
 
-        StartCoroutine(LoadSceneTransition());
+        StartCoroutine(LoadSceneTransition());        
     }
 
     private void GameStateChanhedCallback(GameState gameState)
@@ -98,10 +99,30 @@ public class UIManager : MonoBehaviour
 
     private void UpdateCoinsText()
     {
-        menuCoins.text = DataManager.instance.GetCoins().ToString();
-        gameCoins.text = menuCoins.text;
-        levelCompleteCoins.text = menuCoins.text;
-        gameOverCoins.text = menuCoins.text;
+        int currentCoins = DataManager.instance.GetCoins();
+        int targetCoins = currentCoins;
+
+        if (!string.IsNullOrEmpty(menuCoins.text))
+            int.TryParse(menuCoins.text, out targetCoins);
+
+        if (targetCoins != currentCoins)
+        {
+            DOTween.To(() => targetCoins, x => targetCoins = x, currentCoins, 1f)
+                .OnUpdate(() => {
+
+                    menuCoins.text = targetCoins.ToString();
+                    gameCoins.text = targetCoins.ToString();
+                    levelCompleteCoins.text = targetCoins.ToString();
+                    gameOverCoins.text = targetCoins.ToString();
+                })
+                .OnComplete(() => {
+
+                    menuCoins.text = currentCoins.ToString();
+                    gameCoins.text = currentCoins.ToString();
+                    levelCompleteCoins.text = currentCoins.ToString();
+                    gameOverCoins.text = currentCoins.ToString();
+                });
+        }
     }
 
     private void ShowMenuCG()

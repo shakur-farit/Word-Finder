@@ -165,7 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coins 1_0
+      name: Basic front coin
       rect:
         serializedVersion: 2
         x: 20
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5384c8db511af8548bf0c6e237ebe15b
-      internalID: -892530161
+      spriteID: b06c865dc08983849a784ccb1baa5598
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coins 1_1
+      name: Blue front coin
       rect:
         serializedVersion: 2
         x: 148
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7036b9a264e3a1b40b4578ed7410ae47
-      internalID: -221818638
+      spriteID: eac850ce518cf3643a1a843b1b986c61
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coins 1_2
+      name: Green front coin
       rect:
         serializedVersion: 2
         x: 20
@@ -221,19 +221,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d5988dabf3126d4ab1292ee947cba0f
-      internalID: 607689841
+      spriteID: 009eb2c065b75834bb52498556ca7bcf
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coins 1_3
+      name: Pink front coin
       rect:
         serializedVersion: 2
-        x: 148
+        x: 150
         y: 21
-        width: 89
+        width: 87
         height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a59bc71432801584997e0b1f14f7829d
-      internalID: -1441778219
+      spriteID: 14ba46d2db7a4ad46af2512d67be023a
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -259,10 +259,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Coins 1_0: -892530161
-      Coins 1_1: -221818638
-      Coins 1_2: 607689841
-      Coins 1_3: -1441778219
+      Basic front coin: 21300000
+      Blue front coin: 21300002
+      Green front coin: 21300004
+      Pink front coin: 21300006
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

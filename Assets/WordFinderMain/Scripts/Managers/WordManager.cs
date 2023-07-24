@@ -12,6 +12,8 @@ public class WordManager : MonoBehaviour
 
     private bool shouldResetWord;
 
+    public string FileText { get { return fileText; } }
+
     private void Awake()
     {
         if (instance == null)
@@ -44,7 +46,11 @@ public class WordManager : MonoBehaviour
 
     private void SetSecretWord()
     {
+#if UNITY_EDITOR_WIN
         string[] lines = fileText.Split("\r\n");
+#elif UNITY_EDITOR_OSX
+        string[] lines = fileText.Split("\n");
+#endif
         Debug.Log(lines.Length);
         int randomLineIndex = Random.Range(0, lines.Length);
         secretWord = lines[randomLineIndex];

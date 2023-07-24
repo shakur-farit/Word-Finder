@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
     private int coins;
     private int score;
     private int bestScore;
+    public bool isFirstStart = true;
 
     public static Action onCoinsUpdate;
 

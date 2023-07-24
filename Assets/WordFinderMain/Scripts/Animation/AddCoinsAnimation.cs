@@ -51,6 +51,9 @@ public class AddCoinsAnimation : MonoBehaviour
     {
         Reset();
 
+        //if (initCoinsCount > prefsCount)
+        //    initCoinsCount = prefsCount;
+
         var delay = 0f;
 
         pileOfCoinsParent.SetActive(true);
