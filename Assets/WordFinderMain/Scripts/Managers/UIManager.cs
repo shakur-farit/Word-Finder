@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup nothingToHintCG;
     [SerializeField] private CanvasGroup getCoinsForWatchingAD_CG;
     [SerializeField] private CanvasGroup sceneTransitionCG;
+    [SerializeField] private CanvasGroup shopCG;
 
     [SerializeField] private TextMeshProUGUI menuBestScore;
     [SerializeField] private TextMeshProUGUI menuCoins;
@@ -31,6 +32,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverCoins;
     [SerializeField] private TextMeshProUGUI gameOverSecretWord;
     [SerializeField] private TextMeshProUGUI gameOverBestScore;
+
+    [SerializeField] private TextMeshProUGUI shopCoins;
+
 
     [SerializeField] ButtonsAnimation GetCoinsButton;
     [SerializeField] ButtonsAnimation LetterHintButton;
@@ -63,6 +67,7 @@ public class UIManager : MonoBehaviour
         HideLevelCompleteCG();
         HideGameOverCG();
         HideHelpCG();
+        HideShopCG();
         HideNothingToHintCG();
         HideGetCoinsForWatchingAD_CG();
 
@@ -114,6 +119,7 @@ public class UIManager : MonoBehaviour
                     gameCoins.text = targetCoins.ToString();
                     levelCompleteCoins.text = targetCoins.ToString();
                     gameOverCoins.text = targetCoins.ToString();
+                    shopCoins.text = targetCoins.ToString();
                 })
                 .OnComplete(() => {
 
@@ -121,6 +127,7 @@ public class UIManager : MonoBehaviour
                     gameCoins.text = currentCoins.ToString();
                     levelCompleteCoins.text = currentCoins.ToString();
                     gameOverCoins.text = currentCoins.ToString();
+                    shopCoins.text = currentCoins.ToString();
                 });
         }
     }
@@ -251,6 +258,22 @@ public class UIManager : MonoBehaviour
             return;
 
         HideCG(helpCG);
+    }
+
+    public void ShowShopCG()
+    {
+        if (shopCG == null)
+            return;
+
+        ShowCG(shopCG);
+    }
+
+    public void HideShopCG()
+    {
+        if (shopCG == null)
+            return;
+
+        HideCG(shopCG);
     }
 
     public void ShowNothingToHintCG()

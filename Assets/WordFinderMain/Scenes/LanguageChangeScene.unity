@@ -6706,6 +6706,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1569233061770355622, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
+      propertyPath: _adUnitId
+      value: ca-app-pub-3940256099942544/5224354917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569233061770355623, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
+      propertyPath: _adUnitId
+      value: ca-app-pub-3940256099942544/5224354917
+      objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355623, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: rewardAmount
       value: 30
