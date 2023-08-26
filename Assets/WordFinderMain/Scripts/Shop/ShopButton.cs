@@ -12,25 +12,15 @@ public class ShopButton : MonoBehaviour
     [SerializeField] private TMP_Text coinsAmountText;
     [SerializeField] protected TMP_Text priceText;
 
-    public Button GetButton => button;
-
     private void Start()
     {
         coinsAmountText.text = "+" + coinsAmount.ToString();
         priceText.text = price.ToString() + " $";
-
-        button.onClick.AddListener(() => Buying(coinsAmount,price));
     }
 
-    private void Buying(int coinsAmount, float price)
+    public void BuyCoins()
     {
-        IncreaeCoins(coinsAmount);
-        Debug.Log("Buy " + coinsAmount + " for " + price);
+        DataManager.instance.AddCoins(coinsAmount);
+        Debug.Log($"Add {coinsAmount} coins");
     }
-
-    private void IncreaeCoins(int amount)
-    {
-        DataManager.instance.AddCoins(amount);
-    }
-
 }

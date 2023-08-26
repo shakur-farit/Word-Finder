@@ -1,43 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.Purchasing;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    //[SerializeField] private ShopButton[] shopButtons;
+    [SerializeField] Button[] shopButtons;
 
-    //private int buttonIndex;
+    public void OnPurchaseCompleted(Product product)
+    {
+        switch (product.definition.id)
+        {
+            case "com.MareCo.WordFinder.removeads":
+                RemoveAds();
+                break;
 
-    //private void Start()
-    //{
-    //    ConfigureButtons();
-    //}
+            case "com.MareCo.WordFinder.500coins":
+                BuyCoins(500);
+                break;
+        }
+    }
 
-    //private void ConfigureButtons()
-    //{
-    //    for (int i = 0; i < shopButtons.Length; i++)
-    //    {
-    //        buttonIndex = i;
-    //        shopButtons[i].GetButton.onClick.AddListener(() => SelectedButton(buttonIndex));
-    //    }
-    //}
+    private void RemoveAds()
+    {
+        PlayerPrefs.SetInt("RemoveAds", 1);
+        Debug.Log("Remove ads");
+    }
 
-    //private void SelectedButton(int buttonIndex)
-    //{
-    //    for (int i = 0; i < shopButtons.Length; i++)
-    //    {
-    //        if(i == buttonIndex)
-    //        {
-    //            Debug.Log("Selected " + i + " indexes button");
-    //        }
-    //    }
-    //}
-
-    //public void IncreaeCoins(int amount)
-    //{
-    //    DataManager.instance.AddCoins(amount);
-    //}
-
-
+    private void BuyCoins(int amount)
+    {
+        DataManager.instance.AddCoins(amount);
+        Debug.Log($"Add {amount} coins");
+    }
 }

@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
             DOTween.To(() => targetCoins, x => targetCoins = x, currentCoins, 1f)
                 .OnUpdate(() => {
 
-                    menuCoins.text = targetCoins.ToString();
+                    //menuCoins.text = targetCoins.ToString();
                     gameCoins.text = targetCoins.ToString();
                     levelCompleteCoins.text = targetCoins.ToString();
                     gameOverCoins.text = targetCoins.ToString();
@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
                 })
                 .OnComplete(() => {
 
-                    menuCoins.text = currentCoins.ToString();
+                    //menuCoins.text = currentCoins.ToString();
                     gameCoins.text = currentCoins.ToString();
                     levelCompleteCoins.text = currentCoins.ToString();
                     gameOverCoins.text = currentCoins.ToString();
@@ -264,6 +264,8 @@ public class UIManager : MonoBehaviour
     {
         if (shopCG == null)
             return;
+
+        shopCoins.text = DataManager.instance.GetCoins().ToString();
 
         ShowCG(shopCG);
     }
