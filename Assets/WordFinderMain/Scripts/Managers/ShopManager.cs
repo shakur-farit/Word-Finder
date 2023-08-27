@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
-using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] Button[] shopButtons;
-
     public void OnPurchaseCompleted(Product product)
     {
         switch (product.definition.id)
@@ -25,6 +22,7 @@ public class ShopManager : MonoBehaviour
     private void RemoveAds()
     {
         PlayerPrefs.SetInt("RemoveAds", 1);
+        AdsManager.instance.adsRemoved = true;
         Debug.Log("Remove ads");
     }
 

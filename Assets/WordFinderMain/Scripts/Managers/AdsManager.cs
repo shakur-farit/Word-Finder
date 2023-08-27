@@ -10,6 +10,8 @@ public class AdsManager : MonoBehaviour
     public InterstitialAdScript interstitialAd;
     public RewardAdScript rewardAd;
 
+    public bool adsRemoved = false;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -19,10 +21,17 @@ public class AdsManager : MonoBehaviour
         else
             instance = this;
 
+        AdsRemovedCheck();
+
         MobileAds.Initialize((InitializationStatus initStatus) =>
-        {
+        { 
             interstitialAd.LoadInterstitialAd();
             rewardAd.LoadRewardedAd();
         });
+    }
+    private void AdsRemovedCheck()
+    {
+        if (PlayerPrefs.GetInt("RemoveAds") == 1)
+            adsRemoved = true;
     }
 }

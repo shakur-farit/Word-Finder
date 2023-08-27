@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
     public void NextButtonCallback()
     {   
         PlayButtonCallback();
-        AdsManager.instance.interstitialAd.ShowAd();
+
+        if(!AdsManager.instance.adsRemoved)
+            AdsManager.instance.interstitialAd.ShowAd();
     }
 
     public void PlayButtonCallback()

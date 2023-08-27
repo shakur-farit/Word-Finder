@@ -5355,6 +5355,7 @@ MonoBehaviour:
   nothingToHintCG: {fileID: 0}
   getCoinsForWatchingAD_CG: {fileID: 0}
   sceneTransitionCG: {fileID: 1647347164}
+  shopCG: {fileID: 0}
   menuBestScore: {fileID: 0}
   menuCoins: {fileID: 0}
   gameScore: {fileID: 0}
@@ -5366,6 +5367,7 @@ MonoBehaviour:
   gameOverCoins: {fileID: 0}
   gameOverSecretWord: {fileID: 0}
   gameOverBestScore: {fileID: 0}
+  shopCoins: {fileID: 0}
   GetCoinsButton: {fileID: 0}
   LetterHintButton: {fileID: 0}
 --- !u!1 &1523727380
@@ -6705,6 +6707,10 @@ PrefabInstance:
     - target: {fileID: 1569233061770355619, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: m_Name
       value: AdsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569233061770355622, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
+      propertyPath: adTiming
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355622, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: _adUnitId
