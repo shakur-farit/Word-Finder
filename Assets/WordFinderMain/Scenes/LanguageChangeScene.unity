@@ -1590,7 +1590,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 1468.44, y: 2610.5596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &275506468
 MonoBehaviour:
@@ -2654,7 +2654,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 888, y: 1920}
+  m_SizeDelta: {x: 1502.7695, y: 3249.2314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597300473
 MonoBehaviour:
@@ -3469,7 +3469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &790667900
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6835,7 +6835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004707526973869986, guid: 27f02f5c1bc992e4e874e04bc23122f4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f02f5c1bc992e4e874e04bc23122f4, type: 3}
