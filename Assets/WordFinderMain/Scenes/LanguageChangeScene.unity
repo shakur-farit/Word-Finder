@@ -6710,15 +6710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355622, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: adTiming
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355622, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: _adUnitId
-      value: ca-app-pub-3940256099942544/5224354917
+      value: ca-app-pub-4265030920624102/9112058639
       objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355623, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: _adUnitId
-      value: ca-app-pub-3940256099942544/5224354917
+      value: ca-app-pub-4265030920624102/9969327815
       objectReference: {fileID: 0}
     - target: {fileID: 1569233061770355623, guid: f1e97a6e77a1f944fa865e87e6a313a4, type: 3}
       propertyPath: rewardAmount
